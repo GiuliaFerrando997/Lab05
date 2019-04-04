@@ -9,25 +9,21 @@ import java.util.List;
 
 public class DizionarioDAO {
 
-	public List<String> getParoleCorrette(List<String> soluzioni) {
+	public boolean getParoleCorrette(String soluzioni) {
 			Connection conn = ConnectDB.getConnection();
-			List<String> paroleCorrette = new LinkedList<>();
+			boolean trovata = false;
 				try {
 					String sql = "SELECT nome FROM parola WHERE nome=?";
 					
 					PreparedStatement st = conn.prepareStatement(sql);
-					for(String word : soluzioni) {
-						st.setString(1, word);
-					}
+					st.setString(1, soluzioni);
 					ResultSet rs = st.executeQuery();
 					
 					while(rs.next()) {
-						
 						String s = rs.getString("nome");
-						if(s!=null)
-						paroleCorrette.add(s);
-						System.out.println(paroleCorrette+"\n");
-					}
+						if(s.equals(soluzioni))
+						trovata= true;
+						}
 				
 					conn.close();
 					
@@ -35,7 +31,7 @@ public class DizionarioDAO {
 					e.printStackTrace();
 				}
 				
-				return paroleCorrette;
+				return trovata;
 		}
 
 }

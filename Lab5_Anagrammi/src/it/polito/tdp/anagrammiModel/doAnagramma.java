@@ -22,7 +22,6 @@ public class doAnagramma {
 		char c='c';
 				if(L==finale.getIniziale().length() 
 						&& !this.soluzioni.contains(parziale.getIniziale())){
-						System.out.println(parziale.getIniziale()+"\n");
 						soluzioni.add(parziale.getIniziale());
 						return;
 					}

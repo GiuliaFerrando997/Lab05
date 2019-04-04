@@ -16,7 +16,10 @@ public class AnagrammiModel {
 		ca.genera(parola);
 		soluzioni.addAll(ca.getSoluzioni());
 		DizionarioDAO dao = new DizionarioDAO();
-		paroleCorrette = dao.getParoleCorrette(soluzioni);
+		for(String s : this.soluzioni) {
+			if(dao.getParoleCorrette(s))
+				paroleCorrette.add(s);
+		}
 		return paroleCorrette;
 	}
 	
