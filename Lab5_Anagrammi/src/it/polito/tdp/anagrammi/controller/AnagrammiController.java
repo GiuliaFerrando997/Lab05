@@ -51,8 +51,11 @@ public class AnagrammiController {
     		return;
     	}
     	List<String> paroleCorrette = new ArrayList<>();
+    	List<String> paroleErrate = new ArrayList<>();
     	paroleCorrette.addAll(model.Anagramma(parola));
+    	paroleErrate.addAll(model.paroleErrate(parola));
     	txtParoleCorrette.appendText(paroleCorrette.toString());
+    	txtParoleErrate.appendText(paroleErrate.toString());
     }
 
     @FXML

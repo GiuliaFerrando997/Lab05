@@ -19,7 +19,6 @@ public class doAnagramma {
 	}
 	
 	private void cerca(Anagramma parziale, int L, Anagramma finale) {
-		System.out.println(parziale.getSpell().keySet()+" "+ parziale.getSpell().values());
 		char c='c';
 				if(L==finale.getIniziale().length() 
 						&& !this.soluzioni.contains(parziale.getIniziale())){
@@ -31,10 +30,8 @@ public class doAnagramma {
 				for(int i=0; i<finale.getIniziale().length(); i++) {
 					c=finale.getIniziale().charAt(i);
 					if(parziale.getSpell(c) < finale.getSpell(c)) {
-							System.out.println(c);
 							parziale.setSpell(c);
 							parziale.setIniziale(c);
-							System.out.println(c+"\n"+parziale.getIniziale());
 							this.cerca(parziale, L+1, finale);
 							
 							parziale.togliLettera(c);

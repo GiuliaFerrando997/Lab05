@@ -26,6 +26,7 @@ public class DizionarioDAO {
 						String s = rs.getString("nome");
 						if(s!=null)
 						paroleCorrette.add(s);
+						System.out.println(paroleCorrette+"\n");
 					}
 				
 					conn.close();
