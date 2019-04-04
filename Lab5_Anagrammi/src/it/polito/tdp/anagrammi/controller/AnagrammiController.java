@@ -2,6 +2,8 @@
 package it.polito.tdp.anagrammi.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.anagrammiModel.AnagrammiModel;
@@ -43,12 +45,21 @@ public class AnagrammiController {
 
     @FXML
     void doAnagramma(ActionEvent event) {
-
+    	String parola = txtInserisci.getText();
+    	if(parola.matches("[aA-zZ]")) {
+    		txtParoleCorrette.setText("Inserire solo lettere");
+    		return;
+    	}
+    	List<String> paroleCorrette = new ArrayList<>();
+    	paroleCorrette.addAll(model.Anagramma(parola));
+    	txtParoleCorrette.appendText(paroleCorrette.toString());
     }
 
     @FXML
     void doReset(ActionEvent event) {
-
+    	txtInserisci.clear();
+    	txtParoleCorrette.clear();
+    	txtParoleErrate.clear();
     }
 
     @FXML
